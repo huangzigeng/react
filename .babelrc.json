@@ -1,4 +1,11 @@
 {
-  "presets": ["env", "stage-0", "react"],
-  "plugins": ["transform-runtime"]
+  "presets": ["env", "stage-0", "react"], //babel配置文件
+  "plugins": [
+    "transform-runtime",
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": "css" // `style: true` 会加载 less 文件
+    }]
+  ]
 }

@@ -4,31 +4,25 @@
 import React from 'react'
 import  ReactDOM from 'react-dom'
 import './index.scss'
-class Counter extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { number: 0}
-    this.decrease = this.decrease.bind(this)
-    this.increase = this.increase.bind(this)
-  }
-  increase() {
-    let self = this
-    self.setState({ number: self.state.number + 1})
-  }
-
-  decrease(){
-    let self = this
-    self.setState({ number: self.state.number - 1})
-  }
+import { DatePicker } from 'antd';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import homeRoute from './routers/index'
+import { renderRoutes } from 'react-router-config'
+class Index extends React.Component {
 
   render() {
     return (
+    <Router>
       <div>
-        <input type="button" value = '减11' onClick={this.decrease}/>
-        <span>{this.state.number}</span>
-        <input type="button" value = "加1" onClick={this.increase}/>
+        {renderRoutes(homeRoute)}
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/topics">Topics</Link></li>
+        </ul>
       </div>
+    </Router>
     );
   }
 }
-ReactDOM.render(<Counter />, document.getElementById('root'))
+ReactDOM.render(<Index />, document.getElementById('root'))
